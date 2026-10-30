@@ -408,6 +408,5 @@ body:has(.wa-home), .wa-home {
   }
 }
 .wa-home .topnav { background: var(--bg); }
-.wa-home .btn:not(.ghost):not(.off) { background: var(--wa); color: #06260f; box-shadow: 0 4px 14px color-mix(in srgb, var(--wa) 35%, transparent); }
 .wa-home ol.steps li::marker { color: var(--accent); font-weight: 700; }
 .wa-home .foot-in { border-top-color: var(--line); }
