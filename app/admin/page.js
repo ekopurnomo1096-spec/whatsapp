@@ -247,7 +247,7 @@ function Convs({ note }) {
                 <div className="msgs" role="log" aria-label="Isi percakapan">
                   {loading && !conv ? <Loader /> : conv?.messages?.length ? conv.messages.map((m, i) => (
                     <div key={m.t + "-" + i} className={"bubble " + m.r}>
-                      <div className="small muted">{m.r === "bot" ? "Bot" : m.n} · {fmtTime(m.t)}</div>
+                      <div className="small muted">{m.r === "bot" ? "Bot" : String(m.n || "").replace(/\s*\(\+\d+\)\s*$/, "")} · {fmtTime(m.t)}</div>
                       <div className="logtext">{m.x}</div>
                     </div>
                   )) : <p className="muted">Percakapan ini sudah kedaluwarsa.</p>}
