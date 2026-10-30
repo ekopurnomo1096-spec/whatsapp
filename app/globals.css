@@ -395,3 +395,22 @@ select { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
   .itemrow.th:not(.up) > button:nth-of-type(2) { grid-area: d; }
   .itemrow.th:not(.up) > button:nth-of-type(3) { grid-area: r; }
 }
+
+/* ===== Tema WhatsApp (khusus beranda) ===== */
+body:has(.wa-home), .wa-home {
+  --bg: #efeae2; --card: #fff; --ink: #111b21; --mute: #54656f; --line: #d9d2c5;
+  --accent: #128c7e; --accent-ink: #fff; --wa: #25d366; --gold: #128c7e;
+}
+@media (prefers-color-scheme: dark) {
+  body:has(.wa-home), .wa-home {
+    --bg: #0b141a; --card: #202c33; --ink: #e9edef; --mute: #8696a0; --line: #2a3942;
+    --accent: #25d366; --accent-ink: #06260f; --gold: #25d366;
+  }
+}
+.wa-home .topnav { background: var(--bg); }
+.wa-home .btn:not(.ghost):not(.off) { background: var(--wa); color: #06260f; box-shadow: 0 4px 14px color-mix(in srgb, var(--wa) 35%, transparent); }
+.wa-home .btn.ghost { border-color: var(--accent); color: var(--accent); }
+.wa-home .btn.ghost:hover { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+.wa-home .card { border-left: 3px solid var(--wa); }
+.wa-home ol.steps li::marker { color: var(--accent); font-weight: 700; }
+.wa-home .foot-in { border-top-color: var(--line); }
