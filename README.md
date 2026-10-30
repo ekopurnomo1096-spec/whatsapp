@@ -6,7 +6,7 @@ Bot WhatsApp (Cloud API resmi dari Meta) yang menjawab pesan memakai Google Gemi
 
 - **Jawaban AI** dari Gemini, dengan riwayat percakapan per pengguna (bisa dihapus lewat `/reset`).
 - **Rotasi hingga 5 API key Gemini.** Key dipakai bergantian. Kalau satu key kena batas atau ditolak, bot otomatis pindah ke key berikutnya.
-- **Status tiap key** di halaman admin: siap atau tidak, sisa waktu istirahat, jumlah berhasil dan gagal, permintaan hari ini, kapan terakhir dipakai, dan error terakhir.
+- **Status tiap key** di halaman admin: siap atau tidak, sisa waktu istirahat, jumlah berhasil dan gagal, permintaan hari ini, kapan terakhir dipakai, dan error terakhir
 - **Batas pesan per pengguna**, supaya satu orang tidak menghabiskan kuota semua key.
 - **Percakapan WhatsApp** di halaman admin: admin bisa melihat isi chat setiap pengguna (pertanyaan dan balasan bot) dalam bentuk percakapan.
 - **Log pesan** di halaman admin: siapa bertanya apa, jawabannya, key mana yang dipakai, dan berapa lama.
