@@ -230,6 +230,7 @@ function Convs({ note }) {
               <li key={c.id}>
                 <button className={"convitem" + (sel === c.id ? " active" : "")} onClick={() => open(c.id)}>
                   <b>{c.title}</b>
+                  {c.title !== "+" + c.id && <span className="muted small">+{c.id}</span>}
                   <span className="muted small">{c.count} pesan · {ago(c.last)}</span>
                 </button>
               </li>
@@ -240,7 +241,7 @@ function Convs({ note }) {
               <>
                 <div className="threadhead">
                   <button className="btn ghost back" onClick={() => { setSel(null); setConv(null); }}><Icon name="back" size={16} /><span>Kembali</span></button>
-                  <b>{conv?.title || "…"}</b>
+                  <b>{conv?.title || "…"}{conv && conv.title !== "+" + sel && <span className="muted small" style={{ display: "block", fontWeight: 400 }}>+{sel}</span>}</b>
                   <button className="btn ghost danger" onClick={() => remove(sel)}><Icon name="trash" size={16} /><span>Hapus</span></button>
                 </div>
                 <div className="msgs" role="log" aria-label="Isi percakapan">
