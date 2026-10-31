@@ -14,7 +14,7 @@ export const FL = {
 
 export const T = {
   id: {
-    title: "EMAHAIRSHOP Bot | Tanya Produk Hair Extension via WhatsApp",
+    title: "EMAHAIRSHOP | Tanya Produk Hair Extension via WhatsApp",
     h1: "Layanan Informasi Produk EMAHAIRSHOP di WhatsApp",
     p: "EMAHAIRSHOP adalah supplier dan produsen hair extension dari rambut manusia Remy 100% asal Indonesia sejak 2019. Melalui bot WhatsApp, salon, distributor, dan reseller dapat memperoleh informasi katalog, harga grosir, serta ketersediaan stok weft, tape-in, nano ring, genius weft, keratin, bulk hair, dan wig.",
     chat: "Chat di WhatsApp", off: "Bot belum aktif", shop: "Belanja Grosir",
@@ -29,7 +29,7 @@ export const T = {
     ft2: "© 2026 EMAHAIRSHOP. Seluruh hak cipta dilindungi.",
   },
   en: {
-    title: "EMAHAIRSHOP Bot | Ask About Hair Extensions on WhatsApp",
+    title: "EMAHAIRSHOP | Ask About Hair Extensions on WhatsApp",
     h1: "EMAHAIRSHOP Product Information on WhatsApp",
     p: "EMAHAIRSHOP is an Indonesian supplier and manufacturer of 100% human Remy hair extensions since 2019. Through our WhatsApp bot, salons, distributors and resellers can get information on the catalog, wholesale pricing and availability of weft, tape-in, nano ring, genius weft, keratin, bulk hair and wigs.",
     chat: "Chat on WhatsApp", off: "Bot not active yet", shop: "Shop Wholesale",
@@ -44,7 +44,7 @@ export const T = {
     ft2: "© 2026 EMAHAIRSHOP. All rights reserved.",
   },
   it: {
-    title: "EMAHAIRSHOP Bot | Chiedi informazioni sulle extension su WhatsApp",
+    title: "EMAHAIRSHOP | Chiedi informazioni sulle extension su WhatsApp",
     h1: "Informazioni sui prodotti EMAHAIRSHOP su WhatsApp",
     p: "EMAHAIRSHOP è un fornitore e produttore indonesiano di extension per capelli umani Remy 100% dal 2019. Tramite il bot WhatsApp, saloni, distributori e rivenditori possono ottenere informazioni su catalogo, prezzi all'ingrosso e disponibilità di weft, tape-in, nano ring, genius weft, cheratina, bulk hair e parrucche.",
     chat: "Chatta su WhatsApp", off: "Bot non ancora attivo", shop: "Acquista all'ingrosso",
@@ -59,7 +59,7 @@ export const T = {
     ft2: "© 2026 EMAHAIRSHOP. Tutti i diritti riservati.",
   },
   es: {
-    title: "EMAHAIRSHOP Bot | Consulta sobre extensiones de cabello por WhatsApp",
+    title: "EMAHAIRSHOP | Consulta sobre extensiones de cabello por WhatsApp",
     h1: "Información de productos EMAHAIRSHOP en WhatsApp",
     p: "EMAHAIRSHOP es un proveedor y fabricante indonesio de extensiones de cabello humano Remy 100 % desde 2019. A través del bot de WhatsApp, salones, distribuidores y revendedores pueden consultar el catálogo, los precios mayoristas y la disponibilidad de weft, tape-in, nano ring, genius weft, keratin, cabello a granel y pelucas.",
     chat: "Chatear en WhatsApp", off: "Bot aún no activo", shop: "Comprar al por mayor",
@@ -74,7 +74,7 @@ export const T = {
     ft2: "© 2026 EMAHAIRSHOP. Todos los derechos reservados.",
   },
   fr: {
-    title: "EMAHAIRSHOP Bot | Posez vos questions sur les extensions via WhatsApp",
+    title: "EMAHAIRSHOP | Posez vos questions sur les extensions via WhatsApp",
     h1: "Informations produits EMAHAIRSHOP sur WhatsApp",
     p: "EMAHAIRSHOP est un fournisseur et fabricant indonésien d'extensions de cheveux naturels Remy à 100 % depuis 2019. Via le bot WhatsApp, salons, distributeurs et revendeurs peuvent consulter le catalogue, les tarifs de gros et la disponibilité des wefts, tape-in, nano rings, genius wefts, kératine, cheveux en vrac et perruques.",
     chat: "Discuter sur WhatsApp", off: "Bot pas encore actif", shop: "Acheter en gros",
@@ -104,7 +104,7 @@ export const T = {
     ft2: "© 2026 EMAHAIRSHOP. جميع الحقوق محفوظة.",
   },
   de: {
-    title: "EMAHAIRSHOP Bot | Fragen zu Hair Extensions per WhatsApp",
+    title: "EMAHAIRSHOP | Fragen zu Hair Extensions per WhatsApp",
     h1: "Produktinformationen von EMAHAIRSHOP auf WhatsApp",
     p: "EMAHAIRSHOP ist ein indonesischer Lieferant und Hersteller von 100 % Remy-Echthaar-Extensions seit 2019. Über den WhatsApp-Bot erhalten Salons, Distributoren und Wiederverkäufer Informationen zu Katalog, Großhandelspreisen und Verfügbarkeit von Wefts, Tape-ins, Nano Rings, Genius Wefts, Keratin, Bulk Hair und Perücken.",
     chat: "Auf WhatsApp chatten", off: "Bot noch nicht aktiv", shop: "Großhandel shoppen",
@@ -119,7 +119,7 @@ export const T = {
     ft2: "© 2026 EMAHAIRSHOP. Alle Rechte vorbehalten.",
   },
   ru: {
-    title: "EMAHAIRSHOP Bot | Вопросы о наращивании волос в WhatsApp",
+    title: "EMAHAIRSHOP | Вопросы о наращивании волос в WhatsApp",
     h1: "Информация о продукции EMAHAIRSHOP в WhatsApp",
     p: "EMAHAIRSHOP — индонезийский поставщик и производитель наращивания из 100% натуральных волос Remy с 2019 года. Через бот в WhatsApp салоны, дистрибьюторы и реселлеры могут получить информацию о каталоге, оптовых ценах и наличии: Weft, Tape-in, Nano Ring, Genius Weft, кератин, волосы в срезе (Bulk) и парики.",
     chat: "Написать в WhatsApp", off: "Бот пока не активен", shop: "Оптовые покупки",
