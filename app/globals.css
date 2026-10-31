@@ -64,6 +64,10 @@ a { color: var(--accent); }
 .btn:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; margin: 0 0 16px; }
 .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.online-status { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 600; color: var(--ok); margin-bottom: 14px; }
+.online-status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); flex: none; box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 55%, transparent); animation: dot-pulse 1.8s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) { .online-status .dot { animation: none; } }
+@keyframes dot-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 55%, transparent); } 70% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--ok) 0%, transparent); } 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 0%, transparent); } }
 label { display: block; font-weight: 600; margin: 0 0 6px; }
 input, textarea { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line);
   background: var(--bg); color: var(--ink); font: inherit; }

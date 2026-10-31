@@ -78,6 +78,12 @@ export default function HomeView({ link }) {
       <main className="wrap">
         <section className="hero">
           <h1>{t.h1}</h1>
+          {link && (
+            <span className="online-status">
+              <span className="dot" aria-hidden="true"></span>
+              {t.online}
+            </span>
+          )}
           <div className="row">
             {link ? (
               <a className="btn" href={link} target="_blank" rel="noopener noreferrer">
