@@ -87,7 +87,6 @@ export default function HomeView({ link }) {
             ) : (
               <span className="btn off">{t.off}</span>
             )}
-            <a className="btn ghost" href="https://shop.emahairshop.com/" target="_blank" rel="noopener noreferrer">{t.shop}</a>
           </div>
         </section>
 
