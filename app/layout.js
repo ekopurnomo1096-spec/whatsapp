@@ -3,7 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "EMAHAIRSHOP | Tanya Produk Hair Extension via WhatsApp",
-  description: "Bot WhatsApp resmi EMAHAIRSHOP. Tanya produk human hair extension, harga grosir, dan stok kapan saja, dijawab otomatis saat itu juga.",
+  description: "Bot WhatsApp resmi EMAHAIRSHOP. Tanya produk human hair extension, harga grosir, dan pengiriman kapan saja, dijawab otomatis saat itu juga.",
   icons: { icon: "https://emahairshop.com/favicon.svg" },
 };
 
