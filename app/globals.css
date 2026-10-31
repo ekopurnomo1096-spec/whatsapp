@@ -410,3 +410,13 @@ body:has(.wa-home), .wa-home {
 .wa-home .topnav { background: var(--bg); }
 .wa-home ol.steps li::marker { color: var(--ink); font-weight: 700; }
 .wa-home .foot-in { border-top-color: var(--line); }
+
+/* ===== Admin HP: kepala percakapan rapi ===== */
+@media (max-width: 600px) {
+  .threadhead { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "back del" "name name"; gap: 12px 10px; align-items: center; }
+  .threadhead .back { grid-area: back; justify-self: start; }
+  .threadhead .danger { grid-area: del; justify-self: end; }
+  .threadhead b { grid-area: name; flex: none; }
+  .threadhead b .small { white-space: nowrap; margin-top: 2px; }
+  .bubble { max-width: 92%; }
+}
