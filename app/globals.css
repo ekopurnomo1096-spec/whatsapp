@@ -66,6 +66,8 @@ a { color: var(--accent); }
 .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .online-status { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; font-weight: 600; color: var(--ok); margin-bottom: 14px; }
 .online-status .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ok); flex: none; box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 55%, transparent); animation: dot-pulse 1.8s ease-out infinite; }
+.online-status.offline { color: var(--mute); }
+.online-status.offline .dot { background: var(--mute); animation: none; box-shadow: none; }
 @media (prefers-reduced-motion: reduce) { .online-status .dot { animation: none; } }
 @keyframes dot-pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 55%, transparent); } 70% { box-shadow: 0 0 0 6px color-mix(in srgb, var(--ok) 0%, transparent); } 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 0%, transparent); } }
 label { display: block; font-weight: 600; margin: 0 0 6px; }
@@ -157,6 +159,14 @@ textarea.brain { min-height: 340px; max-height: 70vh; font: .85rem/1.55 ui-monos
 .pill.off { background: var(--line); color: var(--mute); }
 
 /* ===== Admin: percakapan WhatsApp ===== */
+.usage { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin: 0 0 18px; }
+.usagehead { display: flex; justify-content: space-between; gap: 12px; margin: 0 0 8px; }
+.usagehead .bad { color: var(--bad); font-weight: 700; }
+.usagebar { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.usagebar span { display: block; height: 100%; background: var(--ok); border-radius: 999px; }
+.usagebar span.warm { background: var(--gold); }
+.usagebar span.hot { background: var(--bad); }
+.usage p { margin: 8px 0 0; }
 .convsearch { flex: 1 1 160px; width: auto; min-width: 0; }
 .convs { display: grid; grid-template-columns: minmax(200px, 280px) 1fr; gap: 16px; align-items: start; }
 .convlist { max-height: 70vh; overflow-y: auto; border: 1px solid var(--line); border-radius: 12px; }

@@ -1,12 +1,15 @@
 import { isLoggedIn, json, fail } from "@/lib/server";
-import { listConvs, getConv, deleteConv, clearConvs, validChatId } from "@/lib/activity";
+import { listConvs, getConv, deleteConv, clearConvs, validChatId, getSvcUsage } from "@/lib/activity";
 export const dynamic = "force-dynamic";
 
 // Tanpa ?id → daftar percakapan. Dengan ?id=… → isi satu percakapan.
 export async function GET(req) {
   if (!(await isLoggedIn())) return fail("Belum masuk.", 401);
   const id = new URL(req.url).searchParams.get("id");
-  if (id == null) return json({ chats: await listConvs(100) });
+  if (id == null) {
+    const [chats, usage] = await Promise.all([listConvs(100), getSvcUsage()]);
+    return json({ chats, usage });
+  }
   if (!validChatId(id)) return fail("ID percakapan tidak valid.");
   return json(await getConv(id));
 }

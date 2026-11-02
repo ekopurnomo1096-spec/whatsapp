@@ -178,6 +178,7 @@ function SecretInput({ id, value, onChange, placeholder, autoComplete = "off", a
 /* ---------- Percakapan WhatsApp: daftar di kiri, isi di kanan ---------- */
 function Convs({ note }) {
   const [chats, setChats] = useState(null);
+  const [usage, setUsage] = useState(null);
   const [sel, setSel] = useState(null);
   const [conv, setConv] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -185,7 +186,7 @@ function Convs({ note }) {
   const endRef = useRef(null);
 
   async function loadList() {
-    try { setChats((await api("/api/admin/chats")).chats); } catch (e) { note(e.message, true); setChats([]); }
+    try { const r = await api("/api/admin/chats"); setChats(r.chats); setUsage(r.usage || null); } catch (e) { note(e.message, true); setChats([]); }
   }
   async function open(id) {
     setSel(id); setLoading(true);
@@ -213,9 +214,31 @@ function Convs({ note }) {
     <section className="card">
       <h2>Percakapan WhatsApp</h2>
       <p className="muted lead">
-        Semua chat yang masuk ke bot, lengkap dengan balasannya. Maksimal 500 percakapan dan 200 pesan per percakapan,
-        hilang otomatis 30 hari setelah pesan terakhir. Berisi isi percakapan pengguna, jadi hapus kalau tidak diperlukan.
+        Semua chat dan balasan bot. Maks. 500 percakapan, 200 pesan tiap percakapan, hilang otomatis 30 hari setelah pesan terakhir.
       </p>
+      {usage && (() => {
+        const pct = Math.min(100, Math.round((usage.used / usage.free) * 100));
+        const over = usage.used > usage.free;
+        const [ry, rm, rd] = usage.reset.split("-").map(Number);
+        const resetTxt = `${rd} ${["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"][rm - 1]} ${ry}`;
+        return (
+          <div className="usage" role="group" aria-label="Pemakaian pesan bulan ini">
+            <div className="usagehead">
+              <b>Pesan layanan bulan ini</b>
+              <span className={over ? "bad" : ""}>{usage.used.toLocaleString("id-ID")} / {usage.free.toLocaleString("id-ID")}</span>
+            </div>
+            <div className="usagebar" role="progressbar" aria-valuemin={0} aria-valuemax={usage.free} aria-valuenow={Math.min(usage.used, usage.free)}>
+              <span className={pct >= 90 ? "hot" : pct >= 70 ? "warm" : ""} style={{ width: pct + "%" }} />
+            </div>
+            <p className="muted small">
+              {over
+                ? `Jatah gratis habis, ${(usage.used - usage.free).toLocaleString("id-ID")} balasan terakhir ditagih Meta.`
+                : `Sisa ${(usage.free - usage.used).toLocaleString("id-ID")} balasan gratis.`}{" "}
+              Reset {resetTxt}. Hitungan dari balasan bot yang terkirim lewat server ini; angka resmi ada di WhatsApp Manager.
+            </p>
+          </div>
+        );
+      })()}
       <div className="toolbar">
         <button className="btn ghost" onClick={() => { loadList(); if (sel) open(sel); }}><Icon name="refresh" size={16} /><span>Segarkan</span></button>
         <button className="btn ghost danger" disabled={!chats.length} onClick={removeAll}><Icon name="trash" size={16} /><span>Hapus semua</span></button>
