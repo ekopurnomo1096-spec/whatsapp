@@ -4,7 +4,14 @@ import { FL, LN, T } from "./lang";
 
 const KEY = "lang";
 
-export default function HomeView({ link, full = false }) {
+const LOC = { id: "id-ID", en: "en-GB", it: "it-IT", es: "es-ES", fr: "fr-FR", ar: "ar-u-ca-gregory-nu-latn", de: "de-DE", ru: "ru-RU" };
+// reset = "YYYY-MM-DD" (tanggal 1 bulan berikutnya) → "1 Desember" sesuai bahasa halaman.
+function fmtReset(reset, lg) {
+  try { return new Intl.DateTimeFormat(LOC[lg] || "id-ID", { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(reset + "T00:00:00Z")); }
+  catch { return ""; }
+}
+
+export default function HomeView({ link, full = false, reset = "" }) {
   const [lg, setLg] = useState("id");
   const [open, setOpen] = useState(false);
   const wrap = useRef(null);
@@ -81,7 +88,7 @@ export default function HomeView({ link, full = false }) {
           {link && (
             <span className={"online-status" + (full ? " offline" : "")}>
               <span className="dot" aria-hidden="true"></span>
-              {full ? t.offline : t.online}
+              {full ? t.offline.replace("{date}", fmtReset(reset, lg)) : t.online}
             </span>
           )}
           <div className="row">
