@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { redis, decrypt } from "@/lib/server";
 import { waCreds, markReadTyping, sendText, fetchImage } from "@/lib/whatsapp";
 import { generateReply, settingsFrom, getHistory, saveTurn, clearHistory } from "@/lib/gemini";
-import { addLog, addConv, checkLimit, getSvcUsage } from "@/lib/activity";
+import { addLog, addConv, checkLimit, getSvcUsage, addUnans, looksUnsure } from "@/lib/activity";
 import { decorate } from "@/lib/buttons";
 import { getGalleries, withGalleryPrompt, extractGallery, sendAlbum, wantsMedia, wantsMore, matchGallery } from "@/lib/gallery";
 export const dynamic = "force-dynamic";
@@ -155,6 +155,7 @@ async function handleMessage({ m, contacts, cfg, s, c }) {
     console.error("Gemini gagal:", r.error);
     await send(s.fallbackText);
     await addLog({ uid, name: who, q: text, a: r.error, st: "error", ms: Date.now() - t0 });
+    await addUnans({ uid, name: who, q: text, a: r.error, why: "error" });
     return;
   }
 
@@ -185,5 +186,6 @@ async function handleMessage({ m, contacts, cfg, s, c }) {
   }
   await send(d.text, buttons, r.text);
   await saveTurn(chatId, text, albumErr ? reply : r.text, s.historyLimit);
+  if (looksUnsure(r.text)) await addUnans({ uid, name: who, q: text, a: r.text, why: "unsure" });
   await addLog({ uid, name: who, q: text, a: albumErr ? `${r.text} [Album gagal: ${albumErr}]` : r.text, st: albumErr ? "error" : "ok", slot: r.slot, ms: Date.now() - t0 });
 }

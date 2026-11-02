@@ -285,6 +285,48 @@ function Convs({ note }) {
   );
 }
 
+/* ---------- Pertanyaan yang belum terjawab baik ---------- */
+function Unans({ note }) {
+  const [items, setItems] = useState(null);
+  async function load() {
+    try { setItems((await api("/api/admin/unans")).items); } catch (e) { note(e.message, true); setItems([]); }
+  }
+  useEffect(() => { load(); }, []);
+  async function clearAll() {
+    if (!confirm("Hapus semua daftar ini?")) return;
+    try { await api("/api/admin/unans", { action: "clear" }); await load(); note("Daftar dihapus."); } catch (e) { note(e.message, true); }
+  }
+  if (!items) return <Loader />;
+  return (
+    <section className="card">
+      <h2>Belum terjawab</h2>
+      <p className="muted lead">
+        Pertanyaan yang gagal dijawab AI atau dijawab "tidak tahu / akan dikonfirmasi tim". Tambahkan infonya ke prompt agar lain kali terjawab.
+        Maks. 200, hilang otomatis 30 hari. Penandaan "AI ragu" hanya tebakan dari kata-kata jawabannya.
+      </p>
+      <div className="toolbar">
+        <button className="btn ghost" onClick={load}><Icon name="refresh" size={16} /><span>Segarkan</span></button>
+        <button className="btn ghost danger" disabled={!items.length} onClick={clearAll}><Icon name="trash" size={16} /><span>Hapus semua</span></button>
+      </div>
+      {!items.length ? <p className="muted">Belum ada.</p> : (
+        <ul className="plain">
+          {items.map((l, i) => (
+            <li key={l.t + "-" + i} className="logitem">
+              <div className="row small muted">
+                <span>{fmtTime(l.t)}</span>
+                <span>{l.name}</span>
+                <span className="badge bad">{l.why === "error" ? "Error" : "AI ragu"}</span>
+              </div>
+              <div className="logtext"><b>Tanya:</b> {l.q}</div>
+              <div className="logtext muted"><b>{l.why === "error" ? "Keterangan" : "Jawab"}:</b> {l.a}</div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
 /* ---------- Galeri foto & video: bot mengirimnya sebagai album saat pengunjung minta foto ---------- */
 const MAX_PHOTO = 10 * 1024 * 1024;
 const MAX_VIDEO = 20 * 1024 * 1024;
@@ -564,6 +606,7 @@ const MENU = [
     { id: "welcome", label: "Pesan sambutan", icon: "chat" },
     { id: "limit", label: "Batas pesan", icon: "clock" },
     { id: "logs", label: "Log pesan", icon: "list" },
+    { id: "unans", label: "Belum terjawab", icon: "list" },
   ] },
 ];
 const ALL = MENU.flatMap((g) => g.items);
@@ -937,6 +980,7 @@ function Dash({ onLogout }) {
 
       case "convs": return <Convs note={note} />;
       case "gallery": return <Gallery note={note} />;
+      case "unans": return <Unans note={note} />;
 
       case "logs": return (
         <section className="card">
