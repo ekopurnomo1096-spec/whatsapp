@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { redis, decrypt } from "@/lib/server";
 import { waCreds, markReadTyping, sendText, fetchImage } from "@/lib/whatsapp";
 import { generateReply, settingsFrom, getHistory, saveTurn, clearHistory } from "@/lib/gemini";
-import { addLog, addConv, checkLimit } from "@/lib/activity";
+import { addLog, addConv, checkLimit, getSvcUsage } from "@/lib/activity";
 import { decorate } from "@/lib/buttons";
 import { getGalleries, withGalleryPrompt, extractGallery, sendAlbum, wantsMedia, wantsMore, matchGallery } from "@/lib/gallery";
 export const dynamic = "force-dynamic";
@@ -80,6 +80,16 @@ async function handleMessage({ m, contacts, cfg, s, c }) {
 
   const isImage = m.type === "image" && !!m.image?.id;
   const isText = m.type === "text" && !!m.text?.body;
+
+  // Jatah gratis bulan ini habis: pesan dicatat di admin, tapi bot tidak membalas (supaya tidak ada tagihan).
+  const u = await getSvcUsage();
+  if (u.used >= u.free) {
+    if (isText || isImage) {
+      const cap = (isImage ? m.image.caption || "" : m.text.body).trim().slice(0, 4000);
+      await addConv({ chatId, title, role: "user", name: who, text: isImage ? `[Foto]${cap ? " " + cap : ""}` : cap });
+    }
+    return;
+  }
   if (!isText && !isImage) {
     // Pesan suara/video/dokumen: beri tahu sekali. Jenis lain (reaksi, sistem, dll.) diabaikan.
     if (["audio", "video", "document", "sticker"].includes(m.type)) {
