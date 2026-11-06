@@ -331,7 +331,6 @@ ul.keylist { margin: 0 0 22px; display: grid; gap: 10px; }
 .nf-ico svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .nf-t { flex: 1; }
 .nf-ch { width: 16px; height: 16px; stroke: var(--mute); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-[dir="rtl"] .nf-ch { transform: scaleX(-1); }
 .nf-f { margin-top: 36px; font-size: 11px; color: var(--mute); }
 .lm { max-height: 60vh; overflow: auto; }
 @media (prefers-reduced-motion: reduce) { .nf-link { transition: none; } .nf-link:hover { transform: none; } }

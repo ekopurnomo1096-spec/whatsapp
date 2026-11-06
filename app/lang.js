@@ -1,5 +1,5 @@
 // Bahasa beranda — sama dengan 8 bahasa di portal.emahairshop.com.
-export const LN = { en: "English", id: "Indonesia", it: "Italiano", es: "Español", fr: "Français", ar: "العربية", de: "Deutsch", ru: "Русский" };
+export const LN = { en: "English", id: "Indonesia", it: "Italiano", es: "Español", fr: "Français", de: "Deutsch", ru: "Русский" };
 
 export const FL = {
   id: '<svg viewBox="0 0 24 24"><rect width="24" height="12" fill="#e11d48"/><rect y="12" width="24" height="12" fill="#fff"/></svg>',
@@ -7,7 +7,6 @@ export const FL = {
   it: '<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#fff"/><rect width="8" height="24" fill="#15803d"/><rect x="16" width="8" height="24" fill="#dc2626"/></svg>',
   es: '<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#c60b1e"/><rect y="6" width="24" height="12" fill="#ffc400"/></svg>',
   fr: '<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#fff"/><rect width="8" height="24" fill="#1d4ed8"/><rect x="16" width="8" height="24" fill="#dc2626"/></svg>',
-  ar: '<svg viewBox="0 0 24 24"><rect width="24" height="24" fill="#15803d"/><rect x="5" y="15" width="14" height="2" rx="1" fill="#fff"/><rect x="8" y="8" width="8" height="2" rx="1" fill="#fff"/></svg>',
   de: '<svg viewBox="0 0 24 24"><rect width="24" height="8" fill="#111"/><rect y="8" width="24" height="8" fill="#dd0000"/><rect y="16" width="24" height="8" fill="#ffce00"/></svg>',
   ru: '<svg viewBox="0 0 24 24"><rect width="24" height="8" fill="#fff"/><rect y="8" width="24" height="8" fill="#1c57a5"/><rect y="16" width="24" height="8" fill="#d52b1e"/></svg>',
 };
@@ -87,21 +86,6 @@ export const T = {
     n1: "Page introuvable", n2: "Lien invalide ou plus disponible.", n3: "Retour à l'accueil",
     ft1: "8+ ans d'expérience · 100 % cheveux naturels · Livraison mondiale",
     ft2: "© 2026 EMAHAIRSHOP. Tous droits réservés.",
-  },
-  ar: {
-    title: "بوت EMAHAIRSHOP | اسأل عن إكستنشن الشعر عبر واتساب",
-    h1: "معلومات منتجات EMAHAIRSHOP عبر واتساب",
-    p: "EMAHAIRSHOP مورّد ومصنّع إندونيسي لوصلات الشعر الطبيعي Remy بنسبة 100% منذ 2019. عبر بوت واتساب يمكن للصالونات والموزّعين وتجّار إعادة البيع الاطلاع على الكتالوج وأسعار الجملة وتوفر Weft وTape-in وNano Ring وGenius Weft والكيراتين والشعر بالجملة والباروكات.",
-    chat: "تحدّث عبر واتساب", online: "متصل الآن · رد سريع", offline: "غير متصل · يعود في {date}", off: "الذكاء الاصطناعي غير مفعّل بعد", shop: "تسوّق بالجملة",
-    f1t: "الكتالوج وأسعار الجملة", f1d: "معلومات عن أنواع الوصلات والألوان والأطوال وأسعار الجملة، مع صور ومقاطع فيديو للمنتجات.",
-    f2t: "استجابة سريعة على مدار 24 ساعة", f2d: "يمكن طرح الأسئلة في أي وقت، ويتم الرد عليها تلقائيًا في الحال.",
-    f3t: "إجابات بالذكاء الاصطناعي", f3d: "يجيب الذكاء الاصطناعي عن الأسئلة استنادًا إلى كتالوج EMAHAIRSHOP وسياساتها الرسمية.",
-    how: "طريقة الاستخدام",
-    s1: "اختر «تحدّث عبر واتساب».", s2: "أرسل رسالة أولى، مثل «مرحبا»، لبدء المحادثة.", s3: "اطرح سؤالك بحسب احتياجك، مثل معلومات المنتجات أو أسعار الجملة أو توفر المخزون.",
-    lang: "اللغة",
-    n1: "الصفحة غير موجودة", n2: "الرابط غير صالح أو لم يعد متاحًا.", n3: "العودة إلى الرئيسية",
-    ft1: "أكثر من 8 سنوات من الخبرة · شعر طبيعي 100% · شحن عالمي",
-    ft2: "© 2026 EMAHAIRSHOP. جميع الحقوق محفوظة.",
   },
   de: {
     title: "EMAHAIRSHOP | Fragen zu Hair Extensions per WhatsApp",

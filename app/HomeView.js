@@ -4,7 +4,7 @@ import { FL, LN, T } from "./lang";
 
 const KEY = "lang";
 
-const LOC = { id: "id-ID", en: "en-GB", it: "it-IT", es: "es-ES", fr: "fr-FR", ar: "ar-u-ca-gregory-nu-latn", de: "de-DE", ru: "ru-RU" };
+const LOC = { id: "id-ID", en: "en-GB", it: "it-IT", es: "es-ES", fr: "fr-FR", de: "de-DE", ru: "ru-RU" };
 // reset = "YYYY-MM-DD" (tanggal 1 bulan berikutnya) → "1 Desember" sesuai bahasa halaman.
 function fmtReset(reset, lg) {
   try { return new Intl.DateTimeFormat(LOC[lg] || "id-ID", { day: "numeric", month: "long", timeZone: "UTC" }).format(new Date(reset + "T00:00:00Z")); }
@@ -27,7 +27,7 @@ export default function HomeView({ link, full = false, reset = "" }) {
 
   useEffect(() => {
     document.documentElement.lang = lg;
-    document.documentElement.dir = lg === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = "ltr";
     document.title = t.title;
   }, [lg, t]);
 

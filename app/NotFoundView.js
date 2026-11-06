@@ -20,7 +20,7 @@ export default function NotFoundView() {
 
   useEffect(() => {
     document.documentElement.lang = lg;
-    document.documentElement.dir = lg === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = "ltr";
     document.title = "EMAHAIRSHOP | " + t.n1;
   }, [lg, t]);
 
