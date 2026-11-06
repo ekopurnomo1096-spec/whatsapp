@@ -81,9 +81,9 @@ async function handleMessage({ m, contacts, cfg, s, c }) {
   const isImage = m.type === "image" && !!m.image?.id;
   const isText = m.type === "text" && !!m.text?.body;
 
-  // Jatah gratis bulan ini habis: pesan dicatat di admin, tapi bot tidak membalas (supaya tidak ada tagihan).
+  // Jatah gratis bulan ini hampir/sudah habis (berhenti di stopAt, sedikit di bawah 1.000): pesan dicatat di admin, tapi bot tidak membalas (supaya tidak ada tagihan).
   const u = await getSvcUsage();
-  if (u.used >= u.free) {
+  if (u.used >= u.stopAt) {
     if (isText || isImage) {
       const cap = (isImage ? m.image.caption || "" : m.text.body).trim().slice(0, 4000);
       await addConv({ chatId, title, role: "user", name: who, text: isImage ? `[Foto]${cap ? " " + cap : ""}` : cap });
