@@ -234,7 +234,7 @@ function Convs({ note }) {
               {over
                 ? `Jatah gratis habis, ${(usage.used - usage.free).toLocaleString("id-ID")} balasan terakhir ditagih Meta.`
                 : `Sisa ${(usage.free - usage.used).toLocaleString("id-ID")} balasan gratis.`}{" "}
-              Reset {resetTxt}. Hitungan dari balasan bot yang terkirim lewat server ini; angka resmi ada di WhatsApp Manager.
+              Reset {resetTxt}. Angka diambil dari Meta (diperbarui tiap beberapa menit) dan digabung dengan hitungan bot ini; bot berhenti membalas sedikit sebelum 1.000.
             </p>
           </div>
         );
