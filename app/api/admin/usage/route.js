@@ -12,7 +12,7 @@ export async function GET() {
   try {
     const token = await decrypt(cfg.token);
     const now = new Date();
-    const start = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) / 1000);
+    const start = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) / 1000) - 7 * 3600; // awal bulan WIB
     const end = Math.floor(Date.now() / 1000);
     const fields = `pricing_analytics.start(${start}).end(${end}).granularity(DAILY).metric_types(["VOLUME"]).dimensions(["PRICING_CATEGORY"])`;
     const res = await fetch(`${GRAPH}/${cfg.wabaId}?fields=${encodeURIComponent(fields)}`, {
