@@ -20,7 +20,14 @@ export async function GET() {
       signal: AbortSignal.timeout(8000),
     });
     const raw = await res.json().catch(() => ({}));
-    return json({ ...out, meta: { status: res.status, ok: res.ok, raw } });
+    // Pembanding: analytics pengiriman (sent/delivered), yang kemungkinan dipakai halaman Insight di WhatsApp Manager.
+    const f2 = `analytics.start(${start}).end(${end}).granularity(DAY)`;
+    const res2 = await fetch(`${GRAPH}/${cfg.wabaId}?fields=${encodeURIComponent(f2)}`, {
+      headers: { authorization: `Bearer ${token}` },
+      signal: AbortSignal.timeout(8000),
+    });
+    const raw2 = await res2.json().catch(() => ({}));
+    return json({ ...out, meta: { status: res.status, ok: res.ok, raw }, analytics: { status: res2.status, ok: res2.ok, raw: raw2 } });
   } catch (e) {
     return json({ ...out, meta: { error: String(e?.message || e).slice(0, 300) } });
   }
