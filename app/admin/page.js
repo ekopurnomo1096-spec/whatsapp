@@ -182,11 +182,20 @@ function Convs({ note }) {
   const [sel, setSel] = useState(null);
   const [conv, setConv] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [syncing, setSyncing] = useState(false);
   const [q, setQ] = useState("");
   const endRef = useRef(null);
 
   async function loadList() {
     try { const r = await api("/api/admin/chats"); setChats(r.chats); setUsage(r.usage || null); } catch (e) { note(e.message, true); setChats([]); }
+  }
+  async function syncMeta() {
+    setSyncing(true);
+    try {
+      const r = await api("/api/admin/chats?sync=1"); setChats(r.chats); setUsage(r.usage || null);
+      if (r.usage?.metaErr) note("Sinkron gagal: " + r.usage.metaErr, true); else note("Pemakaian disinkronkan dengan Meta.");
+    } catch (e) { note(e.message, true); }
+    setSyncing(false);
   }
   async function open(id) {
     setSel(id); setLoading(true);
@@ -234,8 +243,9 @@ function Convs({ note }) {
               {over
                 ? `Jatah gratis habis, ${(usage.used - usage.free).toLocaleString("id-ID")} balasan terakhir ditagih Meta.`
                 : `Sisa ${(usage.free - usage.used).toLocaleString("id-ID")} balasan gratis.`}{" "}
-              Reset {resetTxt}. Angka diambil dari Meta (diperbarui tiap beberapa menit) dan digabung dengan hitungan bot ini; bot berhenti membalas sedikit sebelum 1.000.
+              Reset {resetTxt}. Angka diambil dari Meta (diperbarui otomatis tiap 1 jam, atau klik Sinkron) dan digabung dengan hitungan bot ini; bot berhenti membalas sedikit sebelum 1.000.
             </p>
+            <button className="btn ghost" disabled={syncing} onClick={syncMeta}><Icon name="refresh" size={16} /><span>{syncing ? "Menyinkronkan…" : "Sinkron dengan Meta"}</span></button>
           </div>
         );
       })()}

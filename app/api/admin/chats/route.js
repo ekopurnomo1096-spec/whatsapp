@@ -5,9 +5,10 @@ export const dynamic = "force-dynamic";
 // Tanpa ?id → daftar percakapan. Dengan ?id=… → isi satu percakapan.
 export async function GET(req) {
   if (!(await isLoggedIn())) return fail("Belum masuk.", 401);
-  const id = new URL(req.url).searchParams.get("id");
+  const sp = new URL(req.url).searchParams;
+  const id = sp.get("id");
   if (id == null) {
-    const [chats, usage] = await Promise.all([listConvs(100), getSvcUsage()]);
+    const [chats, usage] = await Promise.all([listConvs(100), getSvcUsage(sp.get("sync") === "1")]);
     return json({ chats, usage });
   }
   if (!validChatId(id)) return fail("ID percakapan tidak valid.");
